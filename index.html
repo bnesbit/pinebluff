@@ -83,23 +83,26 @@
                   <li class="dropdown-header">About the Cottage</li>
                   <li><a href="about-interior.html">Interior</a></li>
                   <li><a href="about-exterior.html">Exterior</a></li>
-                  <li><a href="directions.html">Address & Directions</a></li>
+                  <!--<li><a href="directions.html">Address & Directions</a></li>-->
                   <li class="divider"></li>
                   <li class="dropdown-header">About Lac Mecham and Area</li>
                   <li><a href="about-lac_mecham.html">Lac Mecham</a></li>
+                  <!--
                   <li><a href="amenities.html">Local Amenities and Attractions</a></li>
                   <li class="divider"></li>
                   <li class="dropdown-header">More</li>
                   <li><a href="#">Frequently Asked Questions</a></li>
                   <li><a href="#">Check-in and Check-out Policy</a></li>
                   <li><a href="#">Clean Checklist</a></li>
+                  -->
                 </ul>
               </li>
 <!--                <li><a href="#about" id="tellafriend_link" onclick="tellAFriend();"){>Tell a Friend!</a></li>
               <li><a href="#about">Tell Us About Your Stay</a></li>-->
               <li><a href="#contact" onclick="displayContactUsForm()" style="color:white;">Contact Us</a></li>
-              <li><a href="#contact" onclick="displayCalendar()" style="color:white;">Check Rates & Availability</a></li>
-              <li><a href="#contact" onclick="displayReservationForm()"  style="color:white;">Request a Reservation</a></li>
+              <li><a href="#calendar" onclick="displayCalendar()" style="color:white;">Check Rates & Availability</a></li>
+              <li><a href="#reservation" onclick="displayReservationForm()"  style="color:white;">Request a Reservation</a></li>
+              <li><a href="#" onclick="displayLanguageMsg()"  style="color:white;">Francais</a></li>
             </ul>
           </div>
         </div>
@@ -233,6 +236,10 @@
     <!-- /END THE FEATURETTES - Cover -->
     </div>
     
+    <div id="languageMsg">
+      Ce site est en train d'être traduit en français et devrait être achevé dans les prochains jours. Se il vous plaît revenir bientôt.
+    </div>
+    <!--
     <div class="col-sm-12" id="amenities" style="top:150px">
       Local Amenities
       
@@ -244,6 +251,7 @@
 
       RESTAURANTS:  There is a restaurant in Ladysmith located in the Ladysmith Hotel.  They provide good family fare and excellent breakfasts. They also have probably the best club sandwiches and chicken wings anywhere!  Shawville offers some restaurants, pizza, Chinese food, etc.
     </div>
+    -->
       
     <form class="form-horizontal" style="overflow-x:hidden" id="calendar">
       <div class="form-group">
@@ -257,7 +265,7 @@
       </div>
     </form>
      
-    <form class="form-horizontal" style="overflow-x:hidden" id="contactUs">
+    <form class="form-horizontal" style="overflow-x:hidden" id="contactUs" action="forms.php" method="post">
       <div class="form-group">
         <label for="firstName" class="col-sm-4 control-label">First Name</label>
         <div class="col-sm-8">
@@ -289,8 +297,14 @@
           </textarea>
         </div>
       </div>
+      <div class="form-group">
+        <label for="misc" class="col-sm-4 control-label"></label>
+        <div class="col-sm-8">
+          <input type="submit" value="Submit">
+        </div>
+      </div>
     </form>
-     
+    
     <form class="form-horizontal" style="overflow-x:hidden" id="reservationForm">
       <div class="form-group">
         <label for="fromDate" class="col-sm-4 control-label">From</label>
@@ -440,11 +454,17 @@
         });
         $("#requestReservationSubmit").button();
       */
+      
+
         //$("#reservationForm").dialog({ width: 400 });
         $("#reservationForm").dialog({
           width: 500,
           title: "Request a Reservation"
         });
+      };
+      
+      function displayLanguageMsg() {
+        $("#languageMsg").dialog({width: 400, title: "Site français à venir bientôt."});
       };
 
       $(function() { 
@@ -453,6 +473,7 @@
         $("#calendar").hide();
         $("#reservationForm").hide();
         $("#contactUs").hide();
+        $("#languageMsg").hide();
       });
 
     </script>
