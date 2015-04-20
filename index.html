@@ -265,92 +265,94 @@
     </form>
      
     <form class="form-horizontal" style="overflow-x:hidden" id="contactUs" method="post" action="forms.php">
+      <input type="hidden" name="formName" value="Contact Request">
       <div class="form-group">
         <label for="firstName" class="col-sm-4 control-label">First Name</label>
         <div class="col-sm-8">
-          <input id="firstName" class="form-control" type="text" placeholder="First name" />                  
+          <input id="firstName" name="first" class="form-control" type="text" placeholder="First name" />                  
         </div>
       </div>
       <div class="form-group">
         <label for="lastName" class="col-sm-4 control-label">Last Name</label>
         <div class="col-sm-8">
-          <input id="lastName" class="form-control" type="text" placeholder="Last name" />                  
+          <input id="lastName" name="last" class="form-control" type="text" placeholder="Last name" />                  
         </div>
       </div>
       <div class="form-group">
         <label for="phone" class="col-sm-4 control-label">Phone</label>
         <div class="col-sm-8">
-          <input id="phone" class="form-control" type="tel" placeholder="Phone number" />                  
+          <input id="phone" name="phone" class="form-control" type="tel" placeholder="Phone number" />                  
         </div>
       </div>
       <div class="form-group">
         <label for="email" class="col-sm-4 control-label">Email</label>
         <div class="col-sm-8">
-          <input id="email" class="form-control" type="text" placeholder="Email" />                  
+          <input id="email" name="email" class="form-control" type="text" placeholder="Email" />                  
         </div>
       </div>
       <div class="form-group">
         <label for="misc" class="col-sm-4 control-label">Comments</label>
         <div class="col-sm-8">
-          <textarea id="misc" class="form-control" rows="5" columns="20" placeholder="Questions or Comments" >
+          <textarea id="misc" name="comments" class="form-control" rows="5" columns="20" placeholder="Questions or Comments" >
           </textarea>
         </div>
       </div>
       <div class="form-group">
         <label for="misc" class="col-sm-4 control-label"></label>
         <div class="col-sm-8">
-          <input type="submit" form="contactUs" value="Submit"> <!--onclick="submitForm('contactUs')"-->
+          <input type="submit" form="contactUs" value="Submit" onclick="submitForm('contact')">
         </div>
       </div>
     </form>
     
-    <form class="form-horizontal" style="overflow-x:hidden" id="reservationForm">
+    <form class="form-horizontal" style="overflow-x:hidden" id="reservationForm" method="post" action="forms.php">
+      <input type="hidden" name="formName" value="Reservation Request">
       <div class="form-group">
         <label for="fromDate" class="col-sm-4 control-label">From</label>
         <div class="col-sm-8">
-          <input id="fromDate" class="form-control" type="date" placeholder="Select date of arrival" data-date-start-date="7/1/2015"/>
+          <input id="fromDate" name="startDate" class="form-control" type="date" placeholder="Select date of arrival" data-date-start-date="7/1/2015"/>
         </div>
       </div>
       <div class="form-group">
         <label for="toDate" class="col-sm-4 control-label">To</label>
         <div class="col-sm-8">
-          <input id="toDate" class="form-control" type="date" placeholder="Select date of departure" onchange="calculateDuration()"/>                  
+          <input id="toDate" name="endDate" class="form-control" type="date" placeholder="Select date of departure" onchange="calculateDuration()"/>                  
         </div>
       </div>
       <div class="form-group">
         <label for="duration" class="col-sm-4 control-label">Duration</label>
         <div class="col-sm-8">
-          <input id="duration" class="form-control" type="text" disabled placeholder="Please enter valid start and end dates" />                  
+          <input id="duration" name="duration" class="form-control" type="text" disabled placeholder="Please enter valid start and end dates" />                  
         </div>
       </div>
       <div class="form-group">
         <label for="firstName" class="col-sm-4 control-label">First Name</label>
         <div class="col-sm-8">
-          <input id="firstName" class="form-control" type="text" placeholder="First name" />                  
+          <input id="firstName" name="first" class="form-control" type="text" placeholder="First name" />                  
         </div>
       </div>
       <div class="form-group">
         <label for="lastName" class="col-sm-4 control-label">Last Name</label>
         <div class="col-sm-8">
-          <input id="lastName" class="form-control" type="text" placeholder="Last name" />                  
+          <input id="lastName" name="last" class="form-control" type="text" placeholder="Last name" />                  
         </div>
       </div>
       <div class="form-group">
         <label for="phone" class="col-sm-4 control-label">Phone</label>
         <div class="col-sm-8">
-          <input id="phone" class="form-control" type="phone" placeholder="Phone number" />                  
+          <input id="phone" name="phone" class="form-control" type="phone" placeholder="Phone number" />                  
         </div>
       </div>
       <div class="form-group">
         <label for="email" class="col-sm-4 control-label">Email</label>
         <div class="col-sm-8">
-          <input id="email" class="form-control" type="text" placeholder="Email" />                  
+          <input id="email" name="email" class="form-control" type="text" placeholder="Email" />                  
         </div>
       </div>
       <div class="form-group">
         <label for="guestNumber" class="col-sm-4 control-label">Guest Number</label>
         <div class="col-sm-8">
-          <select class="form-control">
+          <select class="form-control" name="guests">
             <option>1
             <option>2
             <option>3
@@ -364,7 +366,7 @@
       <div class="form-group">
         <label for="petNumber" class="col-sm-4 control-label">Pets</label>
         <div class="col-sm-8">
-          <select class="form-control">
+          <select class="form-control" name="pets">
             <option selected>0
             <option>1
             <option>2
@@ -375,23 +377,20 @@
       <div class="form-group">
         <label for="misc" class="col-sm-4 control-label">Comments</label>
         <div class="col-sm-8">
-          <textarea id="misc" class="form-control" rows="5" columns="20"></textarea>
+          <textarea id="misc" name="comments" class="form-control" rows="5" columns="20"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="misc" class="col-sm-4 control-label"></label>
+        <div class="col-sm-8">
+          <input type="submit" form="reservationForm" value="Submit" onclick="submitForm('reservation')">
         </div>
       </div>
     </form>
 
-    <form method="post" action="forms.php">
-      <input type="text" value="test">
-      <input type="submit">    
-    </form>
-    
-    
     <!-- FOOTER -->
     <footer id="footer">
       <p class="pull-right"><a href="#">Back to top</a></p>
-          
-      <input type="submit" form="contactUs" value="Submit">
-
       <!--<p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>-->
     </footer>
     </div>
@@ -415,11 +414,29 @@
         $("#marketingCover").hide();
         $("#directions").show();
       }
-      
-      
+            
       function submitForm(formId) {
-        alert(formId);
-        $("#"+formId).submit();
+        event.preventDefault(); 
+        var form = $("#"+formId);
+        var formData = $(form).serialize();
+        $.ajax({
+          type: 'POST',
+          url: 'forms.php',
+          data: formData
+        })
+        .done(function(response) {
+          // Set the message text.
+          //$(formMessages).text(response);
+          $("#contactUs").dialog("close");
+          alert("Thank you for contacting us, we'll be in touch with you just as soon as we can be!");
+          // Clear the form.
+          //$('#name').val('');
+          //$('#email').val('');
+          //$('#message').val('');
+        })
+        .fail(function() {
+          alert("Oops, there seems to have been a problem sending your message. Please try again later, or email barry-pb@nesbit.net.");
+        })
       }
       
       function displayAmenities() {
