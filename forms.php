@@ -2,7 +2,11 @@
 <body>
 Form handler.
 
-<?php print_r($_POST); ?>
+<p><?php print "CONTENT_TYPE: " . $_SERVER['CONTENT_TYPE'] . "<BR />"; ?>
+<p>
+Post data:<?php print_r($_POST); ?>
+<p>
+Get data: <?php print_r($_GET); ?>
 
 <table>
 <?php 
