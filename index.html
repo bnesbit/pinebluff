@@ -24,7 +24,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-    
     nav.navbar.navbar-inverse.navbar-static-top{
       //font-size: 18px;
       //background-color: rgb(0, 165, 0);
@@ -53,8 +52,6 @@
       overflow-x: hidden;
     }
     </style>
-
-    
   </head>
 
   <body>
@@ -110,6 +107,7 @@
   </div>
 <!-- // Navbar -->
 
+<!--=============================================== PAGE SPECIFIC CONTENT =============================================-->
   <!-- Carousel
   ================================================== -->
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -234,10 +232,8 @@
       </div>
     <!-- /END THE FEATURETTES - Cover -->
     </div>
+<!--=============================================== PAGE SPECIFIC CONTENT =============================================-->
     
-    <div id="languageMsg">
-      Ce site est en train d'être traduit en français et devrait être achevé dans les prochains jours. Se il vous plaît revenir bientôt.
-    </div>
     <!--
     <div class="col-sm-12" id="amenities" style="top:150px">
       Local Amenities
@@ -300,7 +296,7 @@
       <div class="form-group">
         <label for="misc" class="col-sm-4 control-label"></label>
         <div class="col-sm-8">
-          <input type="submit" form="contactUs" value="Submit" onclick="submitForm('contact')">
+          <input type="submit" form="contactUs" value="Submit" onclick="submitForm('contactUs')">
         </div>
       </div>
     </form>
@@ -383,11 +379,18 @@
       <div class="form-group">
         <label for="misc" class="col-sm-4 control-label"></label>
         <div class="col-sm-8">
-          <input type="submit" form="reservationForm" value="Submit" onclick="submitForm('reservation')">
+          <input type="submit" form="reservationForm" value="Submit" onclick="submitForm('reservationForm')">
         </div>
       </div>
     </form>
-
+    
+    <div id="alerts">
+    <div>
+    
+    <div id="languageMsg">
+      Ce site est en train d'être traduit en français et devrait être achevé dans les prochains jours. Se il vous plaît revenir bientôt.
+    </div>
+    
     <!-- FOOTER -->
     <footer id="footer">
       <p class="pull-right"><a href="#">Back to top</a></p>
@@ -399,22 +402,22 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script>
+    
+      function displayAlert(msg) {
+        $("#alerts").html(msg);
+        $("#alerts").dialog ({ width: 500, title: "Message" });
+      }
       function getBottomOfElement(element) {
         return $(element).offset().top + $(element).height();
       }
-      
-      //alert(getBottomOfElement(".navbar-wrapper"));
-      
       function toggleDiv(div) {
         $("#"+div).toggle();
       }
-      
       function showDirections() {
         $("#myCarousel").hide();
         $("#marketingCover").hide();
         $("#directions").show();
       }
-            
       function submitForm(formId) {
         event.preventDefault(); 
         var form = $("#"+formId);
@@ -425,49 +428,36 @@
           data: formData
         })
         .done(function(response) {
-          // Set the message text.
-          //$(formMessages).text(response);
-          $("#contactUs").dialog("close");
-          alert("Thank you for contacting us, we'll be in touch with you just as soon as we can be!");
-          // Clear the form.
-          //$('#name').val('');
-          //$('#email').val('');
-          //$('#message').val('');
+          $("#"+formId).dialog("close");
+          displayAlert("Thank you for contacting us, we'll be in touch with you shortly!");
         })
         .fail(function() {
-          alert("Oops, there seems to have been a problem sending your message. Please try again later, or email barry-pb@nesbit.net.");
+          displayAlert("Oops, there seems to have been a problem sending your message. Please try again later, or email barry-pb@nesbit.net.");
         })
       }
-      
       function displayAmenities() {
         $("#amenities").dialog({ width: 400, title: "Local Amenities" });
       }
-      
       function parseDate(str) {
           var mdy = str.split('-');
           return new Date(mdy[0], mdy[1]-1, mdy[2]);
       }
-
       function daydiff(first, second) {
           return (second-first)/(1000*60*60*24);
       }
-
       function displayCalendar() {
         $("#calendar").dialog({width: 850, title: "Rates and Availability"});
       };
-      
       function displayContactUsForm() {
         $("#contactUs").dialog({
           width: 400,
           title: "Contact Us"
         });
       };
-      
       function calculateDuration() {
         diff = daydiff(parseDate($('#fromDate').val()), parseDate($('#toDate').val()));
         $("#duration").val(diff + " days");
       }
-      
       function displayReservationForm() {
       /*
         $( "#startDate" ).datepicker( {
@@ -488,15 +478,11 @@
         });
         $("#requestReservationSubmit").button();
       */
-      
-
-        //$("#reservationForm").dialog({ width: 400 });
         $("#reservationForm").dialog({
           width: 500,
           title: "Request a Reservation"
         });
       };
-      
       function displayLanguageMsg() {
         $("#languageMsg").dialog({width: 400, title: "Site français à venir bientôt."});
       };
@@ -508,8 +494,8 @@
         $("#reservationForm").hide();
         $("#contactUs").hide();
         $("#languageMsg").hide();
+        $("#alerts").hide();
       });
-
     </script>
   </body>
 </html>

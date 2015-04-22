@@ -36,17 +36,11 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <barry-pb@nesbit.net>' . "\r\n";
 
 // send email
-mail($to,$subject,$message,$headers);
+//mail($to,$subject,$message,$headers);
 http_response_code(200);
-echo "Thank You! Your message has been sent.";
 
 // debug output
-/*
 echo "Subject: ".$subject."<br>";
 echo "To: ".$to."<br>";
 echo "Message: ".$message."<br>";
-*/
 ?>
-<script>
-alert("hit form");
-</script>
