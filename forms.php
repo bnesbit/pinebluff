@@ -1,8 +1,8 @@
 <?php
 //prevent direct access (sort of)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  //header("Location: http://www.pinebluffretreat.com");
-  //exit;
+  header("Location: http://www.pinebluffretreat.com");
+  exit;
 };
 
 // setup email params
